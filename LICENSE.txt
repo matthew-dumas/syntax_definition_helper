@@ -1,0 +1,5 @@
+This software is provided free. It contains no warranty. Use at your own risk, I'm not responsible for anything that may result from use of the software, either proper or improper. 
+
+You may not use this code for monetary gain. 
+
+You may distribute or modify this software so long as all derivative works (all works using any portion of this code) utilize the same license agreement terms contained in this file. 

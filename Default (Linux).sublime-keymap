@@ -1,0 +1,10 @@
+[
+    { 
+    	"keys": ["ctrl+alt+6"], 
+    	"command": "syntax_definition_helper" 
+    },
+    { 
+    	"keys": ["ctrl+alt+7"], 
+    	"command": "syntax_definition_edit_helper" 
+    }
+]

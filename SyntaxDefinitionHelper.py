@@ -9,7 +9,7 @@ class syntax_definition_patterns():
     captures = {}
     comment = ""
     match = ""
-    include = ""
+    include = "" 
 
 class syntax_definition_helper(sublime_plugin.TextCommand):
     def run(self, edit):
@@ -19,6 +19,7 @@ class syntax_definition_helper(sublime_plugin.TextCommand):
         self.this_uuid = str(uuid.uuid1())
         self.patterns = []
         self.patterns_index = -1
+        self.selection = []
 
         window = sublime.active_window()
 
@@ -70,8 +71,18 @@ class syntax_definition_helper(sublime_plugin.TextCommand):
         for region in tokens:
                 self.view.sel().add(region)
 
-        self.view.window().show_input_panel("Modify regex as needed (all affected tokens should be highlighted):" , regex , self.name_regex, None, None)
+        self.selection = self.view.sel()
+        self.view.window().show_input_panel("Modify regex as needed (all affected tokens should be highlighted):" , regex , self.name_regex, self.regex_changed, None)
 
+    def regex_changed(self, input):    
+        self.selection.clear()
+        regex = input
+        tokens = self.view.find_all(regex)
+        for region in tokens:
+                self.view.sel().add(region)
+                print region
+        
+    
     def name_regex(self, input):
         self.patterns[self.patterns_index]["match"] = input
         self.view.window().show_input_panel("What is contained in this regex? " , "" , self.set_regex_scope, None, None)
